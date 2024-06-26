@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: pagamentos-ms
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3309/alurafood
+    username: admin
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka
+server:
+  port: 0
+
+resilience4j.circuitbreaker.instances.atualizaPedido.slidingWindowSize: 3
+resilience4j.circuitbreaker.instances.atualizaPedido.minimumNumberOfCalls: 2
+resilience4j.circuitbreaker.instances.atualizaPedido.waitDurationInOpenState: 50s
